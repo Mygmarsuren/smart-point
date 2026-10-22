@@ -10,13 +10,5 @@
 #sidebar{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#d9e2f0 transparent}#nav .menu-button{display:flex;width:100%;height:auto;min-height:41px;gap:13px;padding:11px 12px;text-align:left;margin:2px 0}#nav .menu-button .menu-icon{display:flex;align-items:center;width:19px;flex-shrink:0}#nav .menu-button .menu-label{width:auto;flex:1;line-height:1.45;font-size:13px}#nav .menu-button .menu-chevron{width:auto;font-size:14px;opacity:.7}#nav .menu-button.has-selection{color:#075fe9;background:#edf4ff}#nav .menu-button.depth-1{padding:9px 10px 9px 28px;min-height:36px;gap:10px}#nav .menu-button.depth-2{padding:9px 8px 9px 43px;min-height:35px;gap:8px}#nav .depth-1 .menu-label,#nav .depth-2 .menu-label{font-size:12px}#nav .menu-bullet{display:block!important;width:4px!important;height:4px;border-radius:50%;background:currentColor;opacity:.5;flex-shrink:0}#nav .submenu{margin:2px 0 7px}#nav .submenu[hidden]{display:none}#nav button:focus-visible{outline:2px solid #0966ff;outline-offset:2px}#nav .depth-1.active,#nav .depth-2.active{background:#e8f1ff;color:#0658df;box-shadow:none;font-weight:600}
 
 #nav .menu-controls{display:flex;gap:5px;padding:0 4px 10px;border-bottom:1px solid #e7edf7;margin-bottom:9px}#nav .menu-controls button{width:auto;min-height:28px;height:auto;font-size:10px;padding:6px 8px;margin:0;background:#eef4ff;color:#416399;border:1px solid #dce7f8;justify-content:center}#nav .menu-controls button:first-child{flex:1}
-/* Blue sidebar supplied in the design reference. */
-#sidebar{background:#1554cf;border-right-color:#1554cf;scrollbar-color:#ffffff66 transparent;color:#fff}
-#nav .menu-button{color:#fff;background:transparent}
-#nav .menu-button:hover{background:#ffffff14;filter:none}
-#nav .menu-button.has-selection{background:#ffffff16;color:#fff}
-#nav .menu-button.active,#nav .depth-1.active,#nav .depth-2.active{background:#fff;color:#1554cf;box-shadow:0 3px 10px #082f8c20;font-weight:600}
-#nav .menu-controls{border-bottom-color:#ffffff30}
-#nav .menu-controls button{background:#ffffff14;border-color:#ffffff40;color:#fff}
-#nav .menu-controls button:hover{background:#ffffff26;filter:none}
-#nav button:focus-visible{outline-color:#fff;outline-offset:2px}
+/* Header color from the supplied reference. */
+header{background:#1554cf}
