@@ -4,25 +4,253 @@ const today=()=>new Date().toISOString().slice(0,10);const seed={balance:24850,r
 function save(){db.orgId=activeOrg;try{localStorage.setItem(currentStorageKey,JSON.stringify(db));return true}catch{storageAvailable=false;toast('Браузер хадгалах боломжгүй. Өгөгдөл зөвхөн энэ хуудсанд үлдэнэ.');return false}}function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.display='none',4000)}function modal(title,body){$('dialogTitle').textContent=title;$('dialogBody').innerHTML=body;$('dialog').showModal()}$('close').onclick=()=>$('dialog').close();$('menu').onclick=()=>{if(matchMedia('(max-width:600px)').matches){const open=$('sidebar').classList.toggle('open');$('menu').setAttribute('aria-expanded',String(open));}else{const collapsed=document.body.classList.toggle('sidebar-collapsed');$('menu').setAttribute('aria-expanded',String(!collapsed));$('menu').title=collapsed?'Цэс дэлгэх':'Цэс хураах';}};
 
 const adminMenu=[
-['system-module','Систем',[]],
-['master-data','Мастер дата',[]],
-['settings','Тохиргоо',[['organization','Байгууллагын мэдээлэл'],['staff','Ажилтнууд'],['roles','Албан үүрэг, хандах эрх'],['system','Системийн үндсэн тохиргоо'],['audit','Үйлдлийн түүх']]],
-['products','Бүтээгдэхүүн',[['product-list','Барааны жагсаалт'],['categories','Барааны ангилал'],['brands','Брэнд'],['units','Хэмжих нэгж']]],
-['codes','Unique код / QR',[['code-list','Кодын жагсаалт'],['code-generate','Бөөнөөр код үүсгэх'],['code-history','Код ашиглалтын түүх']]],
-['points','Оноо',[['point-rules','Оноо олгох нөхцөл'],['point-expiry','Онооны хүчинтэй хугацаа'],['point-transactions','Онооны гүйлгээ']]],
-['wheel','Хүрд',[['wheel-list','Хүрдний жагсаалт'],['wheel-prizes','Шагнал, магадлал, нөөц'],['wheel-rules','Эргүүлэх эрхийн нөхцөл'],['wheel-history','Эргэлт, хожлын түүх']]],
-['coupons','Купон',[['coupon-list','Купоны жагсаалт'],['coupon-purchases','Худалдан авалтын түүх'],['coupon-usage','Купоны ашиглалт']]],
-['surveys','Судалгаа',[['survey-list','Судалгааны жагсаалт'],['survey-answers','Оролцогчид, хариулт'],['survey-results','Үр дүн']]],
-['tasks','Даалгавар',[['task-list','Даалгаврын жагсаалт'],['task-verify','Гүйцэтгэл баталгаажуулах'],['task-history','Гүйцэтгэлийн түүх']]],
-['users','Хэрэглэгчид',[['user-list','Хэрэглэгчийн жагсаалт'],['user-details','Хэрэглэгчийн дэлгэрэнгүй',[['user-points','Онооны үлдэгдэл, түүх'],['user-codes','Ашигласан код'],['user-rewards','Урамшууллын оролцоо']]]]],
-['fulfillment','Шагнал олголт',[['prizes-pending','Олгох хүлээлттэй'],['prizes-delivered','Олгосон шагнал']]],
-['reports','Тайлан',[['report-codes','Код ашиглалтын тайлан'],['report-points','Онооны тайлан'],['report-rewards','Урамшууллын тайлан'],['report-activity','Хэрэглэгчийн идэвхийн тайлан']]]
+  [
+    "system-module",
+    "Систем",
+    [
+      [
+        "settings",
+        "Тохиргоо",
+        [
+          [
+            "organization",
+            "Байгууллагын мэдээлэл"
+          ],
+          [
+            "roles",
+            "Албан үүрэг, хандах эрх"
+          ],
+          [
+            "system",
+            "Системийн үндсэн тохиргоо"
+          ]
+        ]
+      ],
+      [
+        "audit",
+        "Лог"
+      ],
+      [
+        "import",
+        "Импорт"
+      ]
+    ]
+  ],
+  [
+    "master-data",
+    "Мастер дата",
+    [
+      [
+        "users",
+        "Хэрэглэгч",
+        [
+          [
+            "user-list",
+            "Хэрэглэгчийн жагсаалт"
+          ],
+          [
+            "user-details",
+            "Хэрэглэгчийн дэлгэрэнгүй",
+            [
+              [
+                "user-points",
+                "Онооны үлдэгдэл, түүх"
+              ],
+              [
+                "user-codes",
+                "Ашигласан код"
+              ],
+              [
+                "user-rewards",
+                "Урамшууллын оролцоо"
+              ]
+            ]
+          ]
+        ]
+      ],
+      [
+        "products",
+        "Бүтээгдэхүүн",
+        [
+          [
+            "product-list",
+            "Барааны жагсаалт"
+          ],
+          [
+            "categories",
+            "Барааны ангилал"
+          ],
+          [
+            "brands",
+            "Брэнд"
+          ],
+          [
+            "units",
+            "Хэмжих нэгж"
+          ]
+        ]
+      ],
+      [
+        "staff",
+        "Ажилтан"
+      ]
+    ]
+  ],
+  [
+    "codes",
+    "Unique код / QR",
+    [
+      [
+        "code-list",
+        "Кодын жагсаалт"
+      ],
+      [
+        "code-generate",
+        "Бөөнөөр код үүсгэх"
+      ],
+      [
+        "code-history",
+        "Код ашиглалтын түүх"
+      ]
+    ]
+  ],
+  [
+    "points",
+    "Оноо",
+    [
+      [
+        "point-rules",
+        "Оноо олгох нөхцөл"
+      ],
+      [
+        "point-expiry",
+        "Онооны хүчинтэй хугацаа"
+      ],
+      [
+        "point-transactions",
+        "Онооны гүйлгээ"
+      ]
+    ]
+  ],
+  [
+    "wheel",
+    "Хүрд",
+    [
+      [
+        "wheel-list",
+        "Хүрдний жагсаалт"
+      ],
+      [
+        "wheel-prizes",
+        "Шагнал, магадлал, нөөц"
+      ],
+      [
+        "wheel-rules",
+        "Эргүүлэх эрхийн нөхцөл"
+      ],
+      [
+        "wheel-history",
+        "Эргэлт, хожлын түүх"
+      ]
+    ]
+  ],
+  [
+    "coupons",
+    "Купон",
+    [
+      [
+        "coupon-list",
+        "Купоны жагсаалт"
+      ],
+      [
+        "coupon-purchases",
+        "Худалдан авалтын түүх"
+      ],
+      [
+        "coupon-usage",
+        "Купоны ашиглалт"
+      ]
+    ]
+  ],
+  [
+    "surveys",
+    "Судалгаа",
+    [
+      [
+        "survey-list",
+        "Судалгааны жагсаалт"
+      ],
+      [
+        "survey-answers",
+        "Оролцогчид, хариулт"
+      ],
+      [
+        "survey-results",
+        "Үр дүн"
+      ]
+    ]
+  ],
+  [
+    "tasks",
+    "Даалгавар",
+    [
+      [
+        "task-list",
+        "Даалгаврын жагсаалт"
+      ],
+      [
+        "task-verify",
+        "Гүйцэтгэл баталгаажуулах"
+      ],
+      [
+        "task-history",
+        "Гүйцэтгэлийн түүх"
+      ]
+    ]
+  ],
+  [
+    "fulfillment",
+    "Шагнал олголт",
+    [
+      [
+        "prizes-pending",
+        "Олгох хүлээлттэй"
+      ],
+      [
+        "prizes-delivered",
+        "Олгосон шагнал"
+      ]
+    ]
+  ],
+  [
+    "reports",
+    "Тайлан",
+    [
+      [
+        "report-codes",
+        "Код ашиглалтын тайлан"
+      ],
+      [
+        "report-points",
+        "Онооны тайлан"
+      ],
+      [
+        "report-rewards",
+        "Урамшууллын тайлан"
+      ],
+      [
+        "report-activity",
+        "Хэрэглэгчийн идэвхийн тайлан"
+      ]
+    ]
+  ]
 ];
 let selectedAdmin='home';const expandedMenus=new Set();
 function menuItem(item,depth=0){const [id,label,children=[]]=item;const selected=id===selectedAdmin;const contains=children.some(c=>c[0]===selectedAdmin||(c[2]||[]).some(d=>d[0]===selectedAdmin));return `<div class="menu-node"><button type="button" data-admin="${id}" title="${label}" ${children.length?`aria-expanded="${expandedMenus.has(id)}" aria-controls="submenu-${id}"`:selected?'aria-current="page"':''} class="menu-button depth-${depth} ${selected?'active':''} ${contains?'has-selection':''}">${depth===0?`<span class="menu-icon">${lineIcon(id==='fulfillment'?'gift':id)}</span>`:'<span class="menu-bullet"></span>'}<span class="menu-label">${label}</span>${children.length?`<span class="menu-chevron">${lineIcon('chevron')}</span>`:''}</button>${children.length?`<div id="submenu-${id}" class="submenu" ${expandedMenus.has(id)?'':'hidden'}>${children.map(c=>menuItem(c,depth+1)).join('')}</div>`:''}</div>`}
 function findAdmin(id,items=adminMenu){if(id==='home'&&items===adminMenu)return ['home','Нүүр хуудас',[]];for(const item of items){if(item[0]===id)return item;const child=findAdmin(id,item[2]||[]);if(child)return child}return null}
 const routes={'organization':'adminSettingsModule','staff':'adminSettingsModule','roles':'adminSettingsModule','system':'adminSettingsModule','audit':'adminSettingsModule','product-list':'products','product-new':'products','categories':'categories','batches':'batches','brands':'brands','units':'units','code-list':'codes','code-generate':'codes','code-history':'codes','survey-list':'engagementModule','survey-answers':'engagementModule','survey-results':'engagementModule','task-list':'engagementModule','task-verify':'engagementModule','task-history':'engagementModule','coupon-list':'couponModule','coupon-purchases':'couponModule','coupon-usage':'couponModule','wheel-list':'wheelModule','wheel-prizes':'wheelModule','wheel-rules':'wheelModule','wheel-history':'wheelModule','point-rules':'pointRules','point-expiry':'pointExpiry','point-transactions':'pointTransactions','user-list':'users','user-points':'points','report-points':'pointTransactions'};
-function go(p){page=p;{const group=adminMenu.find(x=>x[0]===p);if(group&&group[2].length){expandedMenus.add(p);selectedAdmin=group[2][0][0]}else selectedAdmin=p;}render();$('sidebar').classList.remove('open');$('menu').setAttribute('aria-expanded',String(!matchMedia('(max-width:600px)').matches&&!document.body.classList.contains('sidebar-collapsed')));window.scrollTo(0,0)}
+function go(p){let item=findAdmin(p);if(!item)return;while(item[2]?.length){expandedMenus.add(item[0]);item=item[2][0]}selectedAdmin=item[0];page=selectedAdmin;render();$('sidebar').classList.remove('open');$('menu').setAttribute('aria-expanded',String(!matchMedia('(max-width:600px)').matches&&!document.body.classList.contains('sidebar-collapsed')));window.scrollTo(0,0)}
+
 function render(){document.body.classList.toggle('workspace-home',selectedAdmin==='home');renderShellNavigation();const active=findAdmin(selectedAdmin);$('title').textContent=active[1];$('subtitle').textContent=selectedAdmin==='home'?'Smart Point системийн үйл ажиллагааны нэгдсэн мэдээлэл':'Үйлдвэрлэгч, нийлүүлэгчийн удирдлагын хэсэг';const views={home:workspaceHome,users,settings,products,categories,brands,units,batches,codes,points,reports,pointRules,pointTransactions,pointExpiry,wheelModule,couponModule,engagementModule,adminSettingsModule};const target=routes[selectedAdmin]||(selectedAdmin==='home'?'home':null);$('view').innerHTML=target?views[target]():panel(active[1],'<div class="empty"><p>Энэ хэсгийн цэс, дэлгэцийн бүтэц бэлэн боллоо.</p><p>Дэлгэрэнгүй удирдлагын боломжийг дараагийн хөгжүүлэлтээр нэмнэ.</p></div>');bind();}
 
 function table(head,rows){return `<div class="table-wrap"><table><thead><tr>${head.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.join('')||`<tr><td colspan="${head.length}" class="empty">Одоогоор мэдээлэл алга</td></tr>`}</tbody></table></div>`}const tr=cells=>`<tr>${cells.map(x=>`<td>${x}</td>`).join('')}</tr>`;function panel(title,content,action=''){return `<section class="panel"><div class="panel-head"><h2>${title}</h2>${action}</div>${content}</section>`}function userTable(term=''){return table(['№','Нэр','Утас','Ашигласан код','Цуглуулсан оноо',''],db.users.filter(u=>u.join(' ').toLowerCase().includes(term.toLowerCase())).map((u,i)=>{const records=db.codes.filter(c=>c.used&&c.userPhone===u[1]),earned=db.transactions.filter(t=>t.amount>0&&(t.userPhone===u[1]||db.codes.some(c=>c.code===t.code&&c.userPhone===u[1]))).reduce((sum,t)=>sum+t.amount,0);return tr([i+1,esc(u[0]),esc(u[1]),records.length,fmt(earned),records.length?`<button class="history-user-link" data-linked-user="${esc(records[0].code)}">Кодын түүх</button>`:'—'])}))}
