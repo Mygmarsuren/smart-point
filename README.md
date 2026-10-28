@@ -192,3 +192,7 @@ Smart Distribution reference-ийн цэнхэр нимгэн толгой, ца
 Мастер дата → Хэрэглэгч → Хэрэглэгчийн жагсаалт нь reference-ийн toolbar/filter/dense grid загвартай: код, нэр, бүлэг, идэвхтэй төлөв, утас, и-мэйл, хаяг, зэрэглэл, ашигласан код, орлого/зарлагын нийлбэр. Хайлт, бүлэг/хэрэглэгч/төлөв/зэрэглэлийн шүүлтүүр, баганаар эрэмбэлэх, сонголт, 25 мөрийн pagination, CSV, сонгосон эсвэл шүүсэн бүх хэрэглэгчийн хэвлэх тайлан. Нэр/утасны өмнөх db.users бүтэц болон бусад модулийн холбоосыг хадгалж, нэмэлт мэдээллийг db.userProfiles-д утсаар холбодог.
 
 Хэрэглэгч нээж дэлгэрэнгүй/гүйлгээ харах, нэмэх/засах боломжтой. Код/нормчилсон утас давхардахгүй. Холбоосыг эвдэхгүйн тулд одоо байгаа утсыг засахгүй; нэр болон профайл засна. Анхны 5 профайлын нэмэлт имэйл/хаяг нь .example танилцуулга бөгөөд Жишээ тэмдэглэгээтэй. Жинхэнэ login, message/email sending байхгүй. Create/edit нь хэрэглэгчийн локал лог үүсгэдэг; байгууллагаар тусгаарлагдана.
+
+### Smart UI standard (2026-10-28)
+
+The user list follows the supplied Smart CRM reference: 40px blue header, 190px split sidebar, 32px workspace tabs, three compact filter rows, a 60px grid header and 24px data rows. The count and pagination stay at the bottom of the viewport; the grid scrolls independently. Phone and email filters operate on existing user data. Mobile navigation retains a header menu button. No stored data or business rules are migrated by this visual update.
