@@ -14,3 +14,8 @@
 @media(max-width:800px){.user-register-contact{grid-template-columns:1fr;gap:3px}.user-register-fields label{grid-template-columns:140px minmax(0,1fr)}.user-register-fields input:not([type=checkbox]),.user-register-fields select{width:100%}.user-register-fields{min-height:0}.user-register-toolbar{gap:10px}}
 
 #dialog.user-register-dialog .user-register-toolbar button{margin:0}#dialog.user-register-dialog .user-register-toolbar .primary{background:transparent!important;color:#38434e!important;border:0!important}
+
+/* All registration controls share one left edge, matching the supplied user form. */
+#dialog.user-register-dialog{width:800px}.user-register-contact{display:block;margin-top:0}.user-register-fields{min-height:430px}.user-register-fields label{grid-template-columns:150px 200px;min-height:24px}.user-register-fields .user-register-active input{margin-left:0}.user-dense-grid th:nth-child(4){width:52px}.user-dense-grid th:nth-child(5){width:110px}.user-dense-grid th:nth-child(6){width:140px}.user-dense-grid th:nth-child(7){width:165px}.user-dense-grid th:nth-child(8){width:80px}.user-dense-grid th:nth-child(9){width:100px}.user-dense-grid th:nth-child(10),.user-dense-grid th:nth-child(11){width:110px}
+@media(max-width:800px){.user-register-fields{min-height:280px}.user-register-fields label{grid-template-columns:145px minmax(0,200px)}}
+.user-register-fields .user-register-active input{min-width:0;padding:0;width:16px;height:16px;justify-self:start}

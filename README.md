@@ -198,3 +198,5 @@ Smart Distribution reference-ийн цэнхэр нимгэн толгой, ца
 The user list follows the supplied Smart CRM reference: 40px blue header, 190px split sidebar, 32px workspace tabs, three compact filter rows, a 60px grid header and 24px data rows. The count and pagination stay at the bottom of the viewport; the grid scrolls independently. Phone and email filters operate on existing user data. Mobile navigation retains a header menu button. No stored data or business rules are migrated by this visual update.
 
 User registration uses a tab-free Smart desktop modal with code, name, phone, email, registration channel, level and active state. Save & New opens a cleared form; Save & Close returns to the list. Existing phone references and profile metadata are preserved.
+
+Registration fields now use a single aligned column in the 800px Smart user window. The list, CSV and printed report omit the group column; registration channel replaces the group filter. Legacy group metadata remains stored for compatibility.
