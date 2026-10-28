@@ -4,6 +4,8 @@ const today=()=>new Date().toISOString().slice(0,10);const seed={balance:24850,r
 function save(){db.orgId=activeOrg;try{localStorage.setItem(currentStorageKey,JSON.stringify(db));return true}catch{storageAvailable=false;toast('Браузер хадгалах боломжгүй. Өгөгдөл зөвхөн энэ хуудсанд үлдэнэ.');return false}}function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.display='none',4000)}function modal(title,body){$('dialogTitle').textContent=title;$('dialogBody').innerHTML=body;$('dialog').showModal()}$('close').onclick=()=>$('dialog').close();$('menu').onclick=()=>{if(matchMedia('(max-width:600px)').matches){const open=$('sidebar').classList.toggle('open');$('menu').setAttribute('aria-expanded',String(open));}else{const collapsed=document.body.classList.toggle('sidebar-collapsed');$('menu').setAttribute('aria-expanded',String(!collapsed));$('menu').title=collapsed?'Цэс дэлгэх':'Цэс хураах';}};
 
 const adminMenu=[
+['system-module','Систем',[]],
+['master-data','Мастер дата',[]],
 ['settings','Тохиргоо',[['organization','Байгууллагын мэдээлэл'],['staff','Ажилтнууд'],['roles','Албан үүрэг, хандах эрх'],['system','Системийн үндсэн тохиргоо'],['audit','Үйлдлийн түүх']]],
 ['products','Бүтээгдэхүүн',[['product-list','Барааны жагсаалт'],['categories','Барааны ангилал'],['brands','Брэнд'],['units','Хэмжих нэгж']]],
 ['codes','Unique код / QR',[['code-list','Кодын жагсаалт'],['code-generate','Бөөнөөр код үүсгэх'],['code-history','Код ашиглалтын түүх']]],
