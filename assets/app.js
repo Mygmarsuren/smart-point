@@ -15,14 +15,6 @@ const adminMenu=[
           [
             "organization",
             "Ерөнхий тохиргоо"
-          ],
-          [
-            "roles",
-            "Албан үүрэг, хандах эрх"
-          ],
-          [
-            "system",
-            "Системийн үндсэн тохиргоо"
           ]
         ]
       ],
@@ -244,8 +236,16 @@ const adminMenu=[
       ]
     ]
   ],
-  ["lists", "Жагсаалт", []],
-  ["processes", "Процесс", []]
+  [
+    "lists",
+    "Жагсаалт",
+    []
+  ],
+  [
+    "processes",
+    "Процесс",
+    []
+  ]
 ];
 let selectedAdmin='home';const expandedMenus=new Set();
 function menuItem(item,depth=0){const [id,label,children=[]]=item;const selected=id===selectedAdmin;const contains=children.some(c=>c[0]===selectedAdmin||(c[2]||[]).some(d=>d[0]===selectedAdmin));return `<div class="menu-node"><button type="button" data-admin="${id}" title="${label}" ${children.length?`aria-expanded="${expandedMenus.has(id)}" aria-controls="submenu-${id}"`:selected?'aria-current="page"':''} class="menu-button depth-${depth} ${selected?'active':''} ${contains?'has-selection':''}">${depth===0?`<span class="menu-icon">${lineIcon(id==='fulfillment'?'gift':id)}</span>`:'<span class="menu-bullet"></span>'}<span class="menu-label">${label}</span>${children.length?`<span class="menu-chevron">${lineIcon('chevron')}</span>`:''}</button>${children.length?`<div id="submenu-${id}" class="submenu" ${expandedMenus.has(id)?'':'hidden'}>${children.map(c=>menuItem(c,depth+1)).join('')}</div>`:''}</div>`}
