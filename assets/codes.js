@@ -1,6 +1,6 @@
 'use strict';
 const selectedCodes=new Set();let labelFormat='both';
-function codeStatus(c){return c.used?'used':c.cancelled?'cancelled':c.validTo&&c.validTo<qrBusinessDate()?'expired':c.active&&c.validFrom&&c.validFrom>qrBusinessDate()?'scheduled':c.active?'active':'inactive'}
+function codeStatus(c,businessDate){const date=typeof businessDate==='string'?businessDate:'';return c.used?'used':c.cancelled?'cancelled':c.validTo&&c.validTo<(date||qrBusinessDate())?'expired':c.active&&c.validFrom&&c.validFrom>(date||qrBusinessDate())?'scheduled':c.active?'active':'inactive'}
 const codeStatusLabels={used:'Ашигласан',active:'Идэвхтэй',inactive:'Идэвхгүй',cancelled:'Цуцалсан',expired:'Хугацаа дууссан',scheduled:'Эхлэх хугацаа болоогүй'};
 function ensureSampleCodeList(){
  if(db.sampleCodeListVersion===1||db.codes.length||db.codesEncoding)return;
@@ -28,4 +28,4 @@ function qrStyle(){return '.qr-labels{display:grid;grid-template-columns:repeat(
 function exportQrDocument(codes){return exportQrBulkDocument(codes)}
 function downloadBlob(name,content,type){const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function openQr(codes){return openQrBulkPreview(codes)}
-function bindCodes(){bindQrStandard()}
+function bindCodes(){bindQrStandard();bindCodeProcess()}
