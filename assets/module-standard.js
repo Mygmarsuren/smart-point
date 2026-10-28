@@ -24,7 +24,7 @@ function installModuleStandard(){
 
 function standardModuleDates(form){
  form.querySelectorAll('input[type="date"]').forEach(native=>{
- const wrap=document.createElement('span');wrap.className='module-date-control';native.before(wrap);const text=document.createElement('input');text.type='text';text.placeholder='YYYY/MM/DD';text.value=native.value.replaceAll('-','/');text.required=native.required;text.disabled=native.disabled;text.readOnly=native.readOnly;text.setAttribute('aria-label',native.closest('label')?.firstChild.textContent||'Огноо');text.maxLength=10;
+ const wrap=document.createElement('span');wrap.className='module-date-control';native.before(wrap);const text=document.createElement('input');text.type='text';text.placeholder='YYYY/MM/DD';text.value=native.value.replaceAll('-','/');text.required=native.required;text.disabled=native.disabled;text.readOnly=native.readOnly;text.setAttribute('aria-label',native.getAttribute('aria-label')||native.closest('label')?.firstChild.textContent||'Огноо');text.maxLength=10;
  const update=()=>{const iso=parseQrDate(text.value);text.setCustomValidity(iso===null?'Огноог YYYY/MM/DD хэлбэрээр зөв оруулна уу.':'');native.value=iso||'';native.dispatchEvent(new Event('change',{bubbles:true}))};text.oninput=()=>{text.setCustomValidity('');update()};text.onchange=update;
  const calendar=document.createElement('button');calendar.type='button';calendar.title='Огноо сонгох';calendar.innerHTML=lineIcon('calendar');calendar.onclick=()=>{try{native.showPicker()}catch{native.focus()}};native.oninput=()=>{text.value=native.value.replaceAll('-','/');text.setCustomValidity('')};native.classList.add('module-native-date');wrap.append(text,native,calendar);
  });
