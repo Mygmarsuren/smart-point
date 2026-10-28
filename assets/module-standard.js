@@ -2,7 +2,7 @@
 // Shared EAF presentation. Existing controls and business handlers remain in place.
 function isStandardModule(){return !['home','organization','staff','user-list'].includes(selectedAdmin)&&!goodsPages.includes(selectedAdmin)&&!selectedAdmin.startsWith('code-')&&!selectedAdmin.startsWith('log-')}
 function standardModulePage(){
- const enabled=isStandardModule()&&!document.getElementById('pointWorkspace');document.body.classList.toggle('standard-module-screen',enabled);if(!enabled)return;
+ const enabled=isStandardModule()&&!document.getElementById('pointWorkspace')&&!document.getElementById('wheelWorkspace');document.body.classList.toggle('standard-module-screen',enabled);if(!enabled)return;
  const view=$('view'),bar=document.createElement('div');bar.className='module-command-strip';
  const refresh=document.createElement('button');refresh.innerHTML=lineIcon('refresh')+'Сэргээх';refresh.onclick=()=>render();bar.append(refresh);
  const print=document.createElement('button');print.innerHTML=lineIcon('printer')+'Жагсаалт хэвлэх';print.onclick=()=>window.print();bar.append(print);
