@@ -157,3 +157,7 @@ Smart Distribution reference-ийн цэнхэр нимгэн толгой, ца
 - Нүүр хуудасны welcome доторх «Хяналтын самбар харах» товчоор өмнөх статистикийг харна.
 - Desktop sidebar нарийсгах, mobile drawer нээх/хаах хэвээр. Header байгууллага солих боломжтой.
 - Визуал override нь assets/workspace-shell.css, navigation/tab shell нь assets/workspace-shell.js. Хуучин assets/style.css нь module-specific үндсэн style-уудтай хэвээр.
+
+### Welcome artwork
+
+Нүүр хуудсанд assets/smart-point-welcome.png зураг ашиглана. Хэрэглэгчийн screenshot-д тулгуурлан Smart Software лого, торон дүрслэл, Welcome бичгийг дахин дүрсэлж, гол нэрийг SMART POINT, тайлбарыг LOYALTY & REWARDS MANAGEMENT SYSTEM болгон сольсон. Эх сайт read-only хүсэлтэд 403 өгсөн тул эх asset-ийг шууд хуулсан pixel-identical файл биш. Өмнөх статистикийг зүүн дээд дэд цэсний «Хяналтын самбар харах» товчоор нээнэ. Үндсэн цэс, бүртгэлийн өгөгдлийг өөрчлөөгүй.
