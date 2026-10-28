@@ -206,3 +206,9 @@ The user list toolbar follows the six-action Smart standard: New, Copy, Edit, De
 User registration has the Smart two-row window header: title with maximize/close, save commands, New/Edit state, new-record shortcut, first/previous/next/last navigation within the current filtered list, local storage information and help. Record navigation asks before discarding unsaved changes; unavailable directions are disabled.
 
 Clicking a user's code or name now opens the same registration window. Existing users also see read-only earned, spent and transaction-derived net points plus their ledger history and grant expiry dates. The totals are scoped by user phone (including code-linked ledger entries), refresh during record navigation, and do not claim to deduct expired grants automatically. New users have no points history panel.
+
+### Goods master data (2026-10-28)
+
+Under Master Data, Products is now Goods (Бараа), with six Smart desktop screens: Бараа, Барааны дэлгэрэнгүй жагсаалт, Барааны бүлэг, Барааны ангилал, Бренд and Хэмжих нэгж. The basic grid has a hierarchical group pane; the detail grid has code/name/reference/type/tax/active filters and bulk group/category/brand assignment. Existing products and reference names remain compatible with QR and points modules. Company columns reflect the active organization; there is no financial-system import integration.
+
+Reference registers provide code/name search, sorting, create/copy/edit/delete and printing, with seeded examples. Reference renames propagate to products; groups support parent/child relationships. References already used by a product or subgroup cannot be deleted. Existing product codes are read-only to protect historical QR references. Removing a product archives it (inactive/deleted), retaining QR and ledger history. The same existing product form retains image, price, tax, QR and points settings and adds group/type fields. Local browser storage remains the persistence layer.
