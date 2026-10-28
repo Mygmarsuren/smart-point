@@ -202,3 +202,5 @@ User registration uses a tab-free Smart desktop modal with code, name, phone, em
 Registration fields now use a single aligned column in the 800px Smart user window. The list, CSV and printed report omit the group column; registration channel replaces the group filter. Legacy group metadata remains stored for compatibility.
 
 The user list toolbar follows the six-action Smart standard: New, Copy, Edit, Delete, Refresh and Print. Copy requires one selected user and assigns a fresh code with an empty phone field. Edit requires one selected user. Delete asks for confirmation and hides the selected records using a persisted deleted flag, retaining user references and activity history with an audit entry. Refresh redraws the current filtered list and clears selection.
+
+User registration has the Smart two-row window header: title with maximize/close, save commands, New/Edit state, new-record shortcut, first/previous/next/last navigation within the current filtered list, local storage information and help. Record navigation asks before discarding unsaved changes; unavailable directions are disabled.
