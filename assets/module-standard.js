@@ -2,7 +2,7 @@
 // Shared EAF presentation. Existing controls and business handlers remain in place.
 function isStandardModule(){return !['home','organization','staff','user-list'].includes(selectedAdmin)&&!goodsPages.includes(selectedAdmin)&&!selectedAdmin.startsWith('code-')&&!selectedAdmin.startsWith('log-')}
 function standardModulePage(){
- const enabled=isStandardModule()&&!document.getElementById('pointWorkspace')&&!document.getElementById('wheelWorkspace');document.body.classList.toggle('standard-module-screen',enabled);if(!enabled)return;
+ const enabled=isStandardModule()&&!document.getElementById('pointWorkspace')&&!document.getElementById('wheelWorkspace')&&!document.getElementById('userGroupWorkspace');document.body.classList.toggle('standard-module-screen',enabled);if(!enabled)return;
  const view=$('view'),bar=document.createElement('div');bar.className='module-command-strip';
  const refresh=document.createElement('button');refresh.innerHTML=lineIcon('refresh')+'Сэргээх';refresh.onclick=()=>render();bar.append(refresh);
  const print=document.createElement('button');print.innerHTML=lineIcon('printer')+'Жагсаалт хэвлэх';print.onclick=()=>window.print();bar.append(print);
@@ -12,7 +12,7 @@ function standardModulePage(){
  view.querySelectorAll('.product-toolbar input,.product-toolbar select').forEach(control=>{if(control.closest('label'))return;const label=document.createElement('label');label.className='module-filter-field';const caption=document.createElement('span');caption.textContent=control.tagName==='SELECT'?control.options[0]?.textContent.replace(/^Бүх /,'')||'Сонголт':control.type==='date'?'Огноо':'Хайх';control.before(label);label.append(caption,control)});
 }
 function installModuleStandard(){
- const previous=modal;modal=function(title,body){const dialog=$('dialog');dialog.classList.remove('module-standard-dialog','module-maximized');previous(title,body);if(!isStandardModule()||$('goodsPointsForm')||$('pointUserHistoryWorkspace')||$('dialogBody').querySelector('.qr-report-viewer'))return;
+ const previous=modal;modal=function(title,body){const dialog=$('dialog');dialog.classList.remove('module-standard-dialog','module-maximized');previous(title,body);if(!isStandardModule()||$('goodsPointsForm')||$('endUserGroupForm')||$('rewardProgramForm')||$('pointUserHistoryWorkspace')||$('dialogBody').querySelector('.qr-report-viewer'))return;
  dialog.classList.add('module-standard-dialog');const heading=$('dialogTitle');heading.textContent='';const name=document.createElement('span');name.textContent=title;heading.append(name);
  const max=document.createElement('button');max.type='button';max.textContent='⛶';max.title='Томруулах / буцаах';max.onclick=()=>dialog.classList.toggle('module-maximized');const close=document.createElement('button');close.type='button';close.textContent='×';close.title='Хаах';close.onclick=()=>dialog.close();heading.append(max,close);
  queueMicrotask(()=>{if(!dialog.open||!dialog.classList.contains('module-standard-dialog'))return;const form=$('dialogBody').querySelector('form'),commands=document.createElement('div');commands.className='module-form-commands';$('dialogBody').prepend(commands);
