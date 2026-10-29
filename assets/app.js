@@ -35,7 +35,7 @@ const adminMenu=[
     [
       [
         "users",
-        "Хэрэглэгч",
+        "Эцсийн хэрэглэгч",
         [
           [
             "user-list",
