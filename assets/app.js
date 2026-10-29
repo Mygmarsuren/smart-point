@@ -152,7 +152,7 @@ const adminMenu=[
   ],
   [
     "points",
-    "Оноо",
+    "Онооны хөтөлбөр",
     [
       [
         "point-rules",
