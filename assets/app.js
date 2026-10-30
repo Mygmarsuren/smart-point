@@ -168,7 +168,7 @@ const adminMenu=[
       ],
       [
         "point-scans",
-        "Уншуулсан Unique QR"
+        "Онооны гүйлгээ /QR-аар/"
       ]
     ]
   ],
