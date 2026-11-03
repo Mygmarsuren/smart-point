@@ -1,6 +1,6 @@
 'use strict';
 // Shared EAF presentation. Existing controls and business handlers remain in place.
-function isStandardModule(){return !['home','organization','staff','user-list'].includes(selectedAdmin)&&!goodsPages.includes(selectedAdmin)&&!selectedAdmin.startsWith('code-')&&!selectedAdmin.startsWith('log-')}
+function isStandardModule(){return !['home','organization','staff','user-list','user-detailed-list'].includes(selectedAdmin)&&!goodsPages.includes(selectedAdmin)&&!selectedAdmin.startsWith('code-')&&!selectedAdmin.startsWith('log-')}
 function standardModulePage(){
  const enabled=isStandardModule()&&!document.getElementById('pointWorkspace')&&!document.getElementById('wheelWorkspace')&&!document.getElementById('userGroupWorkspace');document.body.classList.toggle('standard-module-screen',enabled);if(!enabled)return;
  const view=$('view'),bar=document.createElement('div');bar.className='module-command-strip';
