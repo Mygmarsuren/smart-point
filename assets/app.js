@@ -1,7 +1,7 @@
 'use strict';
 const $=id=>document.getElementById(id), fmt=n=>Number(n).toLocaleString('en-US'), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const today=()=>new Date().toISOString().slice(0,10);const seed={balance:24850,rate:100,spinCost:500,codes:[],transactions:[{title:'Шоколад 80 гр',amount:100,date:today(),kind:'Код'},{title:'Купон худалдан авалт',amount:-500,date:today(),kind:'Купон'}],claims:[],completed:[],users:[['Б.Ануударь','9901 2345'],['Г.Энхбат','8811 5678'],['С.Уянга','9966 7788'],['Д.Цэцэг','8800 1122'],['М.Оргил','9911 3344']]};let db,storageAvailable=true;try{db=window.smartPointInitialWorkspace||JSON.parse(localStorage.getItem(currentStorageKey))||structuredClone(seed)}catch{db=structuredClone(seed);storageAvailable=false}let page='home';
-function save(){db.orgId=activeOrg;const oldAudit=db.auditEntries;try{const previous=JSON.parse(localStorage.getItem(currentStorageKey)||'null');const changes=captureWorkspaceAudit(previous,db);if(changes.length)db.auditEntries=[...changes,...(db.auditEntries||[])];localStorage.setItem(currentStorageKey,SmartPointCodeStorage.stringify(db));return true}catch{db.auditEntries=oldAudit;storageAvailable=false;toast('Браузер хадгалах боломжгүй. Өгөгдөл зөвхөн энэ хуудсанд үлдэнэ.');return false}}function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.display='none',4000)}function modal(title,body){$('dialog').classList.remove('qr-list-preview-dialog','point-user-history-dialog','point-user-history-maximized','reward-program-dialog','reward-program-maximized','end-user-group-dialog','point-document-dialog','point-document-maximized','point-document-wide','wheel-spin-dialog');$('dialogTitle').textContent=title;$('dialogBody').innerHTML=body;$('dialog').showModal()}$('close').onclick=()=>$('dialog').close();$('menu').onclick=()=>{if(matchMedia('(max-width:600px)').matches){const open=$('sidebar').classList.toggle('open');$('menu').setAttribute('aria-expanded',String(open));}else{const collapsed=document.body.classList.toggle('sidebar-collapsed');$('menu').setAttribute('aria-expanded',String(!collapsed));$('menu').title=collapsed?'Цэс дэлгэх':'Цэс хураах';}};
+function save(){db.orgId=activeOrg;const oldAudit=db.auditEntries;try{const previous=JSON.parse(localStorage.getItem(currentStorageKey)||'null');const changes=captureWorkspaceAudit(previous,db);if(changes.length)db.auditEntries=[...changes,...(db.auditEntries||[])];localStorage.setItem(currentStorageKey,SmartPointCodeStorage.stringify(db));return true}catch{db.auditEntries=oldAudit;storageAvailable=false;toast('Браузер хадгалах боломжгүй. Өгөгдөл зөвхөн энэ хуудсанд үлдэнэ.');return false}}function toast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.display='none',4000)}function modal(title,body){$('dialog').classList.remove('qr-list-preview-dialog','point-user-history-dialog','point-user-history-maximized','reward-program-dialog','reward-program-maximized','end-user-group-dialog','point-document-dialog','point-document-maximized','point-document-wide','wheel-config-preview-dialog');$('dialogTitle').textContent=title;$('dialogBody').innerHTML=body;$('dialog').showModal()}$('close').onclick=()=>$('dialog').close();$('menu').onclick=()=>{if(matchMedia('(max-width:600px)').matches){const open=$('sidebar').classList.toggle('open');$('menu').setAttribute('aria-expanded',String(open));}else{const collapsed=document.body.classList.toggle('sidebar-collapsed');$('menu').setAttribute('aria-expanded',String(!collapsed));$('menu').title=collapsed?'Цэс дэлгэх':'Цэс хураах';}};
 
 const adminMenu=[
   [
@@ -100,24 +100,6 @@ const adminMenu=[
         "Ажилтан"
       ],
       [
-        "wheel-references",
-        "Хүрд",
-        [
-          [
-            "wheel-list",
-            "Хүрдний жагсаалт"
-          ],
-          [
-            "wheel-prizes",
-            "Шагнал, магадлал, нөөц"
-          ],
-          [
-            "wheel-rules",
-            "Эргүүлэх эрхийн нөхцөл"
-          ]
-        ]
-      ],
-      [
         "codes",
         "Unique код / QR",
         [
@@ -156,10 +138,11 @@ const adminMenu=[
     "wheel",
     "Хүрд",
     [
-      [
-        "wheel-history",
-        "Эргэлт, хожлын түүх"
-      ]
+      ["wheel-list", "Хүрдний жагсаалт"],
+      ["wheel-prizes", "Шагнал, магадлал, нөөц"],
+      ["wheel-rules", "Эргүүлэх эрхийн нөхцөл"],
+      ["wheel-history", "Эргэлт, хожлын түүх"],
+      ["wheel-process", "Хүрд тохируулах процесс"]
     ]
   ],
   [
@@ -266,7 +249,7 @@ const adminMenu=[
 let selectedAdmin='home';const expandedMenus=new Set();
 function menuItem(item,depth=0){const [id,label,children=[]]=item;const selected=id===selectedAdmin;const contains=children.some(c=>c[0]===selectedAdmin||(c[2]||[]).some(d=>d[0]===selectedAdmin));return `<div class="menu-node"><button type="button" data-admin="${id}" title="${label}" ${children.length?`aria-expanded="${expandedMenus.has(id)}" aria-controls="submenu-${id}"`:selected?'aria-current="page"':''} class="menu-button depth-${depth} ${selected?'active':''} ${contains?'has-selection':''}">${depth===0?`<span class="menu-icon">${lineIcon(id==='fulfillment'?'gift':id)}</span>`:'<span class="menu-bullet"></span>'}<span class="menu-label">${label}</span>${children.length?`<span class="menu-chevron">${lineIcon('chevron')}</span>`:''}</button>${children.length?`<div id="submenu-${id}" class="submenu" ${expandedMenus.has(id)?'':'hidden'}>${children.map(c=>menuItem(c,depth+1)).join('')}</div>`:''}</div>`}
 function findAdmin(id,items=adminMenu){if(id==='home'&&items===adminMenu)return ['home','Нүүр хуудас',[]];for(const item of items){if(item[0]===id)return item;const child=findAdmin(id,item[2]||[]);if(child)return child}return null}
-const routes={'organization':'adminSettingsModule','staff':'adminSettingsModule','roles':'adminSettingsModule','system':'adminSettingsModule','audit':'adminSettingsModule','log-records':'logWorkspace','log-system':'logWorkspace','log-users':'logWorkspace','product-list':'goodsWorkspace','product-details':'goodsWorkspace','goods-groups':'goodsWorkspace','product-new':'products','categories':'goodsWorkspace','batches':'batches','brands':'goodsWorkspace','units':'goodsWorkspace','code-list':'codes','code-generate':'codes','code-history':'codes','code-process':'codeProcessWorkspace','survey-list':'engagementModule','survey-answers':'engagementModule','survey-results':'engagementModule','task-list':'engagementModule','task-verify':'engagementModule','task-history':'engagementModule','coupon-list':'couponModule','coupon-purchases':'couponModule','coupon-usage':'couponModule','wheel-list':'wheelModule','wheel-prizes':'wheelModule','wheel-rules':'wheelModule','wheel-history':'wheelModule','point-rules':'rewardProgramsWorkspace','point-expiry':'pointExpiry','point-transactions':'pointBalances','point-document':'pointDocumentsWorkspace','point-scans':'pointScannedCodes','user-list':'users','user-detailed-list':'users','user-groups':'userGroupsWorkspace','report-points':'pointTransactions'};
+const routes={'organization':'adminSettingsModule','staff':'adminSettingsModule','roles':'adminSettingsModule','system':'adminSettingsModule','audit':'adminSettingsModule','log-records':'logWorkspace','log-system':'logWorkspace','log-users':'logWorkspace','product-list':'goodsWorkspace','product-details':'goodsWorkspace','goods-groups':'goodsWorkspace','product-new':'products','categories':'goodsWorkspace','batches':'batches','brands':'goodsWorkspace','units':'goodsWorkspace','code-list':'codes','code-generate':'codes','code-history':'codes','code-process':'codeProcessWorkspace','survey-list':'engagementModule','survey-answers':'engagementModule','survey-results':'engagementModule','task-list':'engagementModule','task-verify':'engagementModule','task-history':'engagementModule','coupon-list':'couponModule','coupon-purchases':'couponModule','coupon-usage':'couponModule','wheel-list':'wheelModule','wheel-prizes':'wheelModule','wheel-rules':'wheelModule','wheel-history':'wheelModule','wheel-process':'wheelModule','point-rules':'rewardProgramsWorkspace','point-expiry':'pointExpiry','point-transactions':'pointBalances','point-document':'pointDocumentsWorkspace','point-scans':'pointScannedCodes','user-list':'users','user-detailed-list':'users','user-groups':'userGroupsWorkspace','report-points':'pointTransactions'};
 function go(p){if(p==='point-expiry')p='point-rules';let item=findAdmin(p);if(!item)return;while(item[2]?.length){expandedMenus.add(item[0]);item=item[2][0]}selectedAdmin=item[0];page=selectedAdmin;render();$('sidebar').classList.remove('open');$('menu').setAttribute('aria-expanded',String(!matchMedia('(max-width:600px)').matches&&!document.body.classList.contains('sidebar-collapsed')));window.scrollTo(0,0)}
 
 function render(){document.body.classList.toggle('user-group-screen',selectedAdmin==='user-groups');document.body.classList.toggle('wheel-standard-screen',selectedAdmin.startsWith('wheel-'));document.body.classList.toggle('point-standard-screen',['point-rules','point-transactions','point-document','point-scans','report-points'].includes(selectedAdmin));document.body.classList.toggle('qr-standard-screen',selectedAdmin.startsWith('code-'));document.body.classList.toggle('staff-screen',selectedAdmin==='staff');document.body.classList.toggle('goods-screen',goodsPages.includes(selectedAdmin));document.body.classList.toggle('workspace-home',selectedAdmin==='home');document.body.classList.toggle('general-company-screen',selectedAdmin==='organization');document.body.classList.toggle('logs-screen',selectedAdmin.startsWith('log-'));document.body.classList.toggle('user-grid-screen',['user-list','user-detailed-list'].includes(selectedAdmin));renderShellNavigation();const active=findAdmin(selectedAdmin);$('title').textContent=active[1];$('subtitle').textContent=selectedAdmin==='home'?'Smart Point системийн үйл ажиллагааны нэгдсэн мэдээлэл':'Үйлдвэрлэгч, нийлүүлэгчийн удирдлагын хэсэг';const views={pointDocumentsWorkspace,userGroupsWorkspace,rewardProgramsWorkspace,pointBalances,pointScannedCodes,codeProcessWorkspace,goodsWorkspace,home:workspaceHome,users,settings,products,categories,brands,units,batches,codes,points,reports,pointRules,pointTransactions,pointExpiry,wheelModule,couponModule,engagementModule,adminSettingsModule,logWorkspace};const target=routes[selectedAdmin]||(selectedAdmin==='home'?'home':null);$('view').innerHTML=target?views[target]():panel(active[1],'<div class="empty"><p>Энэ хэсгийн цэс, дэлгэцийн бүтэц бэлэн боллоо.</p><p>Дэлгэрэнгүй удирдлагын боломжийг дараагийн хөгжүүлэлтээр нэмнэ.</p></div>');bind();standardModulePage();}
