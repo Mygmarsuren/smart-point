@@ -34,6 +34,7 @@ function renderPointScans(){
 }
 
 function bindPointProgram(){
+ bindUserDocuments();
  bindPointDocuments();
  if($('addPointSetting'))$('addPointSetting').onclick=()=>openQrMultiProductLookup(products=>{if(products.length)openGoodsPoints(products)});
  if($('pointUserResults')){$('newPointUserDocument').onclick=()=>openPointDocument();renderPointUsers();for(const id of ['pointUserSearch','pointUserLevel','pointUserActive'])$(id).addEventListener(id==='pointUserSearch'?'input':'change',()=>{pointUserPage=1;renderPointUsers()});$('refreshPointUsers').onclick=renderPointUsers;$('printPointUsers').onclick=openQrListPrint}
