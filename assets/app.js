@@ -114,7 +114,7 @@ const adminMenu=[
   ],
   [
     "points",
-    "Онооны хөтөлбөр",
+    "Хөтөлбөр",
     [
       [
         "point-rules",
