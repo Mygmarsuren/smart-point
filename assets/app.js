@@ -121,12 +121,12 @@ const adminMenu=[
         "Хөтөлбөр"
       ],
       [
-        "point-transactions",
-        "Онооны гүйлгээний жагсаалт"
+        "point-document",
+        "Эцсийн хэрэглэгчийн баримт"
       ],
       [
-        "point-document",
-        "Онооны гүйлгээ бүртгэлийн цонх"
+        "point-transactions",
+        "Онооны гүйлгээний жагсаалт"
       ],
       [
         "point-scans",
