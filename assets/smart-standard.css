@@ -131,3 +131,21 @@
 .point-device-info[hidden]{display:none!important}
 #userProgramDocumentHost,#userProgramDocumentForm{display:flex;flex:1;flex-direction:column;min-height:0}#userProgramDocumentForm .point-document-header [hidden]{display:none!important}#userProgramDocumentForm input[type=hidden]{display:none!important}#userProgramDocumentForm #programDocumentReward,#userProgramDocumentForm #programDocumentThreshold{text-align:right}#userProgramDocumentError{font:12px Arial;margin:6px 9px}#userProgramDocumentError:empty{display:none}#userProgramDocumentForm .point-document-user-reference input:first-of-type:not([type=hidden]){flex:0 0 85px;width:85px}#userProgramDocumentForm .point-document-identity{max-width:65%}@media(max-width:700px){#userProgramDocumentForm .point-document-identity{max-width:100%}}
 #userProgramDocumentForm #programDocumentUserCode{width:85px;min-width:85px;flex:0 0 85px}
+
+/* Match the transaction list to the compact document registration workspace. */
+.point-document-workspace,.point-transaction-list-workspace{box-sizing:border-box;width:100%;max-width:100%;min-width:0}
+.point-transaction-list-workspace .point-command-strip{box-sizing:border-box;min-height:34px;padding:3px 9px;border-bottom:1px solid #d6ddea}
+.point-transaction-list-workspace .point-command-strip>button{height:23px;min-height:23px;font:11px Arial}
+.point-transaction-list-workspace #userDocumentFilters{margin:4px 0 6px;padding:6px 7px;gap:4px 24px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.point-transaction-list-workspace #userDocumentFilters label{grid-template-columns:130px minmax(0,1fr);min-height:24px;font:11px Arial}
+.point-transaction-list-workspace #userDocumentFilters input,.point-transaction-list-workspace #userDocumentFilters select{height:22px;min-height:22px;font:11px Arial}
+.point-transaction-list-workspace #userDocumentRows{box-sizing:border-box;min-width:0;border:1px solid #d6ddea}
+.point-transaction-list-workspace #userDocumentRows th{box-sizing:border-box;height:27px;padding:3px 5px;font:11px Arial}
+.point-transaction-list-workspace #userDocumentRows td{box-sizing:border-box;height:24px;padding:2px 5px;line-height:18px;font-size:11px}
+.point-transaction-list-workspace #userDocumentRows th>button{min-height:20px;font:11px Arial}
+@media(max-width:1100px){.point-transaction-list-workspace #userDocumentFilters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.point-transaction-list-workspace #userDocumentFilters{grid-template-columns:1fr}}
+.point-transaction-list-workspace #userDocumentRows th>button{box-sizing:border-box;height:20px;min-height:20px;padding:0 14px 0 2px;line-height:14px}
+.point-transaction-list-workspace #userDocumentRows th svg{width:12px;height:12px}
+.point-transaction-list-workspace #userDocumentRows th>button{position:relative;white-space:nowrap}
+.point-transaction-list-workspace #userDocumentRows th>button>span{position:absolute;right:0;top:3px;display:flex;align-items:center}
