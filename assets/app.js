@@ -130,7 +130,7 @@ const adminMenu=[
       ],
       [
         "point-transactions",
-        "Эцсийн хэрэглэгчийн оноо"
+        "Эцсийн хэрэглэгчийн онооны жагсаалт"
       ],
       [
         "point-scans",
