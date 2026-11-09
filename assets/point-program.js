@@ -35,6 +35,7 @@ function renderPointScans(){
 }
 
 function bindPointProgram(){
+ bindUserProgramDocument();
  bindProgramParticipants();
  bindUserDocuments();
  bindPointDocuments();
