@@ -130,7 +130,7 @@ const adminMenu=[
       ],
       [
         "point-transactions",
-        "Онооны гүйлгээний жагсаалт"
+        "Эцсийн хэрэглэгчийн оноо"
       ],
       [
         "point-scans",
