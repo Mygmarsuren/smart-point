@@ -122,7 +122,7 @@ const adminMenu=[
       ],
       [
         "point-document",
-        "Эцсийн хэрэглэгчийн баримт"
+        "Онооны гүйлгээ"
       ],
       [
         "user-document-list",
