@@ -149,3 +149,5 @@
 .point-transaction-list-workspace #userDocumentRows th svg{width:12px;height:12px}
 .point-transaction-list-workspace #userDocumentRows th>button{position:relative;white-space:nowrap}
 .point-transaction-list-workspace #userDocumentRows th>button>span{position:absolute;right:0;top:3px;display:flex;align-items:center}
+
+.wheel-form-prizes{min-width:0;border:1px solid #d6ddea;margin:8px 0;padding:6px}.wheel-form-prizes legend{font:600 12px Arial;color:#123659}#wheelFormPrizeRows{overflow:auto}.wheel-form-prize-actions{display:flex;align-items:center;gap:15px;margin-top:5px;font:11px Arial}#wheelFormAddPrize{border:0;border-right:1px solid #d6ddea;border-radius:0;background:white;color:#123659;font:11px Arial;padding:4px 8px;min-height:23px}.module-standard-dialog #wheelFormPrizeRows input:not([type=checkbox]),.module-standard-dialog #wheelFormPrizeRows select{height:22px!important;min-height:22px!important;padding:0 3px;border:0;border-radius:0;font:11px Arial}.wheel-form-prizes .field-hint{margin:5px 0}.wheel-form-prizes button svg{width:12px;height:12px}
