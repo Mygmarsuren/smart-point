@@ -35,6 +35,7 @@ function renderPointScans(){
 }
 
 function bindPointProgram(){
+ bindProgramParticipants();
  bindUserDocuments();
  bindPointDocuments();
  if($('addPointSetting'))$('addPointSetting').onclick=()=>openQrMultiProductLookup(products=>{if(products.length)openGoodsPoints(products)});
