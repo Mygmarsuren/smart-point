@@ -152,3 +152,14 @@
 
 .wheel-form-prizes{min-width:0;border:1px solid #d6ddea;margin:8px 0;padding:6px}.wheel-form-prizes legend{font:600 12px Arial;color:#123659}#wheelFormPrizeRows{overflow:auto}.wheel-form-prize-actions{display:flex;align-items:center;gap:15px;margin-top:5px;font:11px Arial}#wheelFormAddPrize{border:0;border-right:1px solid #d6ddea;border-radius:0;background:white;color:#123659;font:11px Arial;padding:4px 8px;min-height:23px}.module-standard-dialog #wheelFormPrizeRows input:not([type=checkbox]),.module-standard-dialog #wheelFormPrizeRows select{height:22px!important;min-height:22px!important;padding:0 3px;border:0;border-radius:0;font:11px Arial}.wheel-form-prizes .field-hint{margin:5px 0}.wheel-form-prizes button svg{width:12px;height:12px}
 .wheel-prize-edit-grid:has(.wheel-prize-product-reference){min-width:1000px}.wheel-prize-edit-grid th:nth-child(3):has(+th){width:27%}.wheel-prize-product-reference{display:flex;align-items:center;gap:2px;min-width:0}.wheel-prize-product-reference input:first-child{width:75px!important;flex:0 0 75px}.wheel-prize-product-reference input:last-child{flex:1;min-width:0}.wheel-prize-product-reference button{flex:0 0 22px;height:22px;min-height:22px;padding:0;border:1px solid #d6ddea;border-radius:0;background:white;color:#057bff}.wheel-prize-product-reference input{font:11px Arial!important;background:#fafafa!important}
+/* EAF standard tabs in wheel registration. */
+#dialog:has(#wheelForm) #dialogBody{max-height:calc(100dvh - 85px)}
+#wheelForm .wheel-form-tabs{display:flex;gap:2px;margin:10px 0 0;padding:0 4px;border-bottom:1px solid #d6ddea}
+#wheelForm .wheel-form-tabs [role=tab]{height:30px;min-height:30px;padding:4px 12px;margin:0 0 -1px;border:1px solid #d6ddea;border-radius:3px 3px 0 0;background:#fff;color:#123659;font:11px Arial}
+#wheelForm .wheel-form-tabs [aria-selected=true]{background:#4066ff;border-color:#4066ff;color:#fff}
+#wheelForm .wheel-form-tabs [role=tab]:focus-visible{outline:2px solid #91afff;outline-offset:1px}
+#wheelForm .wheel-form-tab-panel{min-width:0;min-height:240px;padding:7px;border:1px solid #d6ddea;border-top:0}
+#wheelForm .wheel-form-tab-panel[hidden]{display:none!important}
+#wheelForm .wheel-form-tab-panel>fieldset{margin:0;border:0;padding:4px}
+#wheelForm .wheel-form-tab-panel legend{padding:0 0 5px;font:600 12px Arial;color:#123659}
+#wheelForm .wheel-form-tab-panel .module-form-row{font:11px Arial}
